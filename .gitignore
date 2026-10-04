@@ -1,0 +1,44 @@
+# Terraform runtime & state
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Sensitive variables and secrets
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+variables/
+vars/
+
+# Keys & Certificates
+*.p8
+*.pem
+*.key
+*.pub
+
+# Environment configuration
+.env
+.env.*
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python cache & virtualenvs
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/

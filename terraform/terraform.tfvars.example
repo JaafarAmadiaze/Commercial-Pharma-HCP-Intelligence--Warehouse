@@ -1,0 +1,5 @@
+snowflake_organization_name = "<YOUR_ORGANIZATION_NAME>"
+snowflake_account_name      = "<YOUR_ACCOUNT_NAME>"
+snowflake_user              = "TF_SERVICE_USER"
+snowflake_private_key_path  = "~/.snowflake/snowflake_tf_key.p8"
+environment                 = "DEV"
