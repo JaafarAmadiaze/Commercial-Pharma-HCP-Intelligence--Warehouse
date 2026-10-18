@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fact_prescription_claims
+    description: "Table de faits des prescriptions TRx et NRx."
+    tests:
+      # Détection d'anomalies de volume journalier (détecte les chutes ou pics anormaux)
+      - elementary.volume_anomalies:
+          timestamp_column: claim_date
+          time_bucket:
+            period: day
+            count: 1
+          anomaly_sensitivity: 3
+
+    columns:
+      - name: claim_id
+        tests:
+          - unique
+          - not_null
+
+      - name: trx_count
+        tests:
+          - not_null
+          # Surveille les dérives de moyenne, minimum et maximum sur le volume
+          - elementary.column_anomalies:
+              column_anomalies:
+                - min
+                - max
+                - average
+
+      - name: physician_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_physician')
+              field: physician_id
+
+  - name: dim_physician
+    description: "Dimension des professionnels de santé avec masquage dynamique."
+    columns:
+      - name: physician_id
+        tests:
+          - unique
+          - not_null
+      - name: npi
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,180 @@
+2026-10-05 23:12:38 — INFO — Installing packages for edr internal dbt package...
+2026-10-05 23:12:38 — INFO — Running dbt command --log-format json deps --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:12:43 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+[31;20m2026-10-05 23:12:45 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-05 23:12:45 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:12:46 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\data_monitoring\data_monitoring.py", line 140, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        "elementary_cli.get_adapter_type_and_unique_id", quiet=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )[0]
+    ^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-05 23:12:46 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+[31;20m2026-10-05 23:12:47 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-05 23:12:47 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+[31;20m2026-10-05 23:12:49 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\api\report\report.py", line 84, in get_report_data
+    tests_api = TestsAPI(
+        dbt_runner=self.dbt_runner,
+    ...<2 lines>...
+        disable_passed_test_metrics=disable_passed_test_metrics,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\api\tests\tests.py", line 51, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\api\tests\tests.py", line 63, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\fetchers\tests\tests.py", line 26, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+        macro_name="elementary_cli.get_test_results",
+    ...<4 lines>...
+        ),
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-05 23:13:24 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:46 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 2603
+2026-10-05 23:13:46 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:47 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 469
+[33;20m2026-10-05 23:13:47 — WARNING — You are using incompatible versions between edr (0.17.0) and Elementary's dbt package (0.16.1).
+ To fix please update your packages.yml, and run:
+dbt deps && dbt run --select elementary
+[0m
+2026-10-05 23:13:47 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:48 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 453
+2026-10-05 23:13:48 — INFO — Elementary's database and schema: '"PHARMA_DW_DEV.ELEMENTARY"'
+2026-10-05 23:13:48 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:52 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 92965
+2026-10-05 23:13:52 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:54 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 401
+2026-10-05 23:13:54 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_seeds", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:13:55 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_seeds", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 401
+2026-10-05 23:13:55 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_snapshots", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+[31;20m2026-10-05 23:13:58 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "[\u001b[31mERROR\u001b[0m]: Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 21 at position 18\n  invalid identifier 'UNIQUE_KEY'", "level": "error", "invocationId": "538a6c5e-99d7-43f5-892d-f8cac065945c", "pid": 8308, "thread": "MainThread", "ts": "2026-10-05T23:13:57.198558Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 21 at position 18\n  invalid identifier 'UNIQUE_KEY'"}}
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\api\report\report.py", line 103, in get_report_data
+    snapshots = models_api.get_snapshots()
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\api\models\models.py", line 140, in get_snapshots
+    snapshot_results = self.models_fetcher.get_snapshots()
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\fetchers\models\models.py", line 48, in get_snapshots
+    run_operation_response = self.dbt_runner.run_operation(
+        macro_name="elementary_cli.get_snapshots"
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\clients\dbt\api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "[\u001b[31mERROR\u001b[0m]: Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 21 at position 18\n  invalid identifier 'UNIQUE_KEY'", "level": "error", "invocationId": "538a6c5e-99d7-43f5-892d-f8cac065945c", "pid": 8308, "thread": "MainThread", "ts": "2026-10-05T23:13:57.198558Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 21 at position 18\n  invalid identifier 'UNIQUE_KEY'"}}
+2026-10-05 23:16:37 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:41 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 2604
+2026-10-05 23:16:41 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:42 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 470
+2026-10-05 23:16:42 — INFO — edr (0.17.0) and Elementary's dbt package (0.17.0) are compatible.
+2026-10-05 23:16:42 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:43 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 454
+2026-10-05 23:16:43 — INFO — Elementary's database and schema: '"PHARMA_DW_DEV.ELEMENTARY"'
+2026-10-05 23:16:43 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:47 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 145788
+2026-10-05 23:16:47 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:49 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:16:49 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_seeds", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:51 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_seeds", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:16:51 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_snapshots", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:52 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_snapshots", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:16:52 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models", "macro_args": {"exclude_elementary": true}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:54 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models", "macro_args": {"exclude_elementary": true}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 8412
+2026-10-05 23:16:54 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_sources", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:56 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_sources", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 3598
+2026-10-05 23:16:56 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_exposures", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:16:59 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_exposures", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:16:59 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_singular_tests", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:01 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_singular_tests", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:17:01 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_runs", "macro_args": {"days_back": 7, "exclude_elementary": true}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:04 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_runs", "macro_args": {"days_back": 7, "exclude_elementary": true}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 402
+2026-10-05 23:17:04 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_dbt_models_test_coverage", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:06 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_dbt_models_test_coverage", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 820
+2026-10-05 23:17:06 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_tests", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:09 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_tests", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 27264
+2026-10-05 23:17:09 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_nodes_depends_on_nodes", "macro_args": {"exclude_elementary": true}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:12 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_nodes_depends_on_nodes", "macro_args": {"exclude_elementary": true}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 5078
+2026-10-05 23:17:12 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_latest_invocation", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:15 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_latest_invocation", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 7244
+2026-10-05 23:17:15 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_latest_invocations_data", "macro_args": {}} --project-dir C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\dell\Desktop\pharma-hcp-warehouse\dbt_pharma
+2026-10-05 23:17:18 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_latest_invocations_data", "macro_args": {}}', '--project-dir', 'C:\\Users\\dell\\AppData\\Roaming\\Python\\Python314\\site-packages\\elementary\\monitor\\dbt_project', '--profiles-dir', 'C:\\Users\\dell\\Desktop\\pharma-hcp-warehouse\\dbt_pharma']' is 858

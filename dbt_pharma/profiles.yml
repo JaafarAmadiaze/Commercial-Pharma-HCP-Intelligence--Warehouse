@@ -1,0 +1,28 @@
+pharma_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "BWLYGBI-AX44839"
+      user: "AMAD007"
+      private_key_path: "C:/Users/dell/.snowflake/snowflake_tf_key.p8"
+      role: "TF_ADMIN"
+      database: "PHARMA_DW_DEV"
+      warehouse: "PHARMA_WH_DEV"
+      schema: "MARTS"
+      threads: 4
+      client_session_keep_alive: False
+
+elementary:
+  outputs:
+    default:
+      type: snowflake
+      account: "BWLYGBI-AX44839"
+      user: "AMAD007"
+      private_key_path: "C:/Users/dell/.snowflake/snowflake_tf_key.p8"
+      role: "TF_ADMIN"
+      database: "PHARMA_DW_DEV"
+      warehouse: "PHARMA_WH_DEV"
+      schema: "ELEMENTARY"
+      threads: 4
+      client_session_keep_alive: False

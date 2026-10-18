@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw_pharma
+    database: PHARMA_DW_DEV
+    schema: RAW
+    tables:
+      - name: raw_physicians
+      - name: raw_products
+      - name: raw_field_calls
+      - name: raw_prescription_claims

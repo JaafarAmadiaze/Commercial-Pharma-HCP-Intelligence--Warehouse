@@ -12,7 +12,7 @@ resource "snowflake_masking_policy" "dea_mask" {
 
   body = <<-EOT
     CASE 
-      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN') THEN val
+      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN', 'TF_ADMIN') THEN val
       ELSE CONCAT(LEFT(val, 2), '*****', RIGHT(val, 2))
     END
   EOT
@@ -32,7 +32,7 @@ resource "snowflake_masking_policy" "phone_mask" {
 
   body = <<-EOT
     CASE 
-      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN') THEN val
+      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN', 'TF_ADMIN') THEN val
       ELSE '***-***-' || RIGHT(val, 4)
     END
   EOT
@@ -52,7 +52,7 @@ resource "snowflake_masking_policy" "email_mask" {
 
   body = <<-EOT
     CASE 
-      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN') THEN val
+      WHEN CURRENT_ROLE() IN ('COMPLIANCE_OFFICER_${var.environment}', 'ACCOUNTADMIN', 'TF_ADMIN') THEN val
       ELSE CONCAT(LEFT(val, 1), '***@', SPLIT_PART(val, '@', 2))
     END
   EOT

@@ -1,0 +1,7 @@
+product_id,brand_name,therapeutic_class,is_our_brand,wac_price
+PRD_001,OncoShield,Oncology,True,4200.0
+PRD_002,TumorStop,Oncology,False,4500.0
+PRD_003,CardioGuard,Cardiology,True,850.0
+PRD_004,VasoPure,Cardiology,False,920.0
+PRD_005,NeuroCalm,Neurology,True,1200.0
+PRD_006,SynapsePlus,Neurology,False,1150.0

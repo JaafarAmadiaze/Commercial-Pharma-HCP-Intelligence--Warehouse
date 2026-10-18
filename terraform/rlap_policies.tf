@@ -40,7 +40,7 @@ resource "snowflake_row_access_policy" "territory_rlap" {
   }
 
   body = <<-EOT
-    CURRENT_ROLE() IN ('ACCOUNTADMIN', 'COMPLIANCE_OFFICER_${var.environment}', 'DATA_ENGINEER_${var.environment}')
+    CURRENT_ROLE() IN ('ACCOUNTADMIN', 'TF_ADMIN', 'COMPLIANCE_OFFICER_${var.environment}', 'DATA_ENGINEER_${var.environment}')
     OR EXISTS (
       SELECT 1 
       FROM ${snowflake_database.pharma_dw.name}.${snowflake_schema.governance.name}.USER_TERRITORY_MAP map

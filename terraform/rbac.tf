@@ -80,6 +80,17 @@ resource "snowflake_grant_privileges_to_account_role" "rep_marts_usage" {
   }
 }
 
+resource "snowflake_grant_privileges_to_account_role" "rep_marts_select" {
+  account_role_name = snowflake_account_role.commercial_rep.name
+  privileges        = ["SELECT"]
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "\"${snowflake_database.pharma_dw.name}\".\"${snowflake_schema.marts.name}\""
+    }
+  }
+}
+
 resource "snowflake_grant_privileges_to_account_role" "compliance_db_usage" {
   account_role_name = snowflake_account_role.compliance_officer.name
   privileges        = ["USAGE"]
@@ -96,3 +107,31 @@ resource "snowflake_grant_privileges_to_account_role" "compliance_marts_usage" {
     schema_name = "\"${snowflake_database.pharma_dw.name}\".\"${snowflake_schema.marts.name}\""
   }
 }
+
+resource "snowflake_grant_privileges_to_account_role" "compliance_marts_select" {
+  account_role_name = snowflake_account_role.compliance_officer.name
+  privileges        = ["SELECT"]
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = "\"${snowflake_database.pharma_dw.name}\".\"${snowflake_schema.marts.name}\""
+    }
+  }
+}
+
+# --- Grant Functional Roles to Current User for Simulation ---
+resource "snowflake_grant_account_role" "grant_compliance_to_user" {
+  role_name = snowflake_account_role.compliance_officer.name
+  user_name = var.snowflake_user
+}
+
+resource "snowflake_grant_account_role" "grant_rep_to_user" {
+  role_name = snowflake_account_role.commercial_rep.name
+  user_name = var.snowflake_user
+}
+
+resource "snowflake_grant_account_role" "grant_de_to_user" {
+  role_name = snowflake_account_role.data_engineer.name
+  user_name = var.snowflake_user
+}
+
